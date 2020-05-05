@@ -31,6 +31,18 @@
                         Login gagal! Password salah!
                         </div>";
                     }
+                    else if ($_GET['pesan'] == 'logout') {
+                        echo "<div class='alert alert-dismissible alert-info'>
+                        <button type='button' class='close' data-dismiss='alert'>&times;</button>
+                        Anda telah logout dari sistem.
+                        </div>";
+                    }
+                    else if ($_GET['pesan'] == 'not_login') {
+                        echo "<div class='alert alert-dismissible alert-danger'>
+                        <button type='button' class='close' data-dismiss='alert'>&times;</button>
+                        Anda belum login!
+                        </div>";
+                    }
                 }
             ?>
 

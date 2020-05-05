@@ -12,7 +12,7 @@
         $dataUser = mysqli_fetch_array($data);
         if ($password == $dataUser['admin_password']) {
             $_SESSION['username'] = $username;
-            $_SESSION['nama'] = $cekUsername['admin_nama'];
+            $_SESSION['nama'] = $dataUser['admin_nama'];
             $_SESSION['status'] = 'logged_in';
             header('location: admin/dashboard.php');
         }
