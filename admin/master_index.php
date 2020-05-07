@@ -1,5 +1,5 @@
-<?php include '../../templates/admin_header.php'; ?>
-<?php include '../../templates/admin_sidebar.php'; ?>
+<?php include '../templates/admin_header.php'; ?>
+<?php include '../templates/admin_sidebar.php'; ?>
 
 <div class="col-md-9">
     <h3>Data Master Chatbot</h3>
@@ -27,6 +27,24 @@
     </div>
     <div class="card">
         <div class="card-body">
+            <?php 
+                if (isset($_GET['pesan'])) {
+                    if ($_GET['pesan'] == 'edit') {
+                        echo '<div class="alert alert-warning alert-dismissible fade show text-primary" role="alert">
+                        Data berhasil diubah!
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button></div>';
+                    }
+                    else if ($_GET['pesan'] == 'delete') {
+                        echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        Data berhasil dihapus!
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button></div>';
+                    }
+                }
+            ?>
             <table class="table table-striped" id="table-master">
                 <thead class="bg-primary text-white">
                     <tr>
@@ -37,7 +55,7 @@
                 </thead>
                 <tbody>
                     <?php 
-                        include '../../koneksi.php';
+                        include '../koneksi.php';
                         $data = mysqli_query($koneksi, "SELECT * FROM tb_dokumen");
                         $no = 1;
                         while($d = mysqli_fetch_array($data)) {
@@ -46,10 +64,11 @@
                         <td><?= $no++; ?></td>
                         <td><?= $d['dokumen']; ?></td>
                         <td>
-                            <a href="master_update.php?<?= $d['id']; ?>" class="btn btn-warning btn-sm">
+
+                            <a href="master_edit.php?id=<?= $d['id']; ?>" class="btn btn-warning btn-sm">
                                 <i class="fas fa-fw fa-edit"></i> Edit
                             </a>
-                            <a href="master_delete.php?<?= $d['id']; ?>" class="btn btn-danger btn-sm">
+                            <a href="master_delete.php?id=<?= $d['id']; ?>" class="btn btn-danger btn-sm">
                                 <i class="fas fa-fw fa-trash"></i> Delete
                             </a>
                         </td>
@@ -72,7 +91,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form method="post" action="master_input.php" class="form-master">
+            <form method="post" action="master_input.php">
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="data"><b>Data</b></label>
@@ -87,4 +106,4 @@
     </div>
 </div>
 
-<?php include '../../templates/admin_footer.php'; ?>
+<?php include '../templates/admin_footer.php'; ?>

@@ -15,7 +15,7 @@
                     class="list-group-item list-group-item-action d-flex justify-content-start align-items-center text-primary">
                     <i class="fas fa-fw fa-shopping-cart mr-3"></i> Data Transaksi
                 </a>
-                <a href="../chatbot/master_index.php"
+                <a href="master_index.php"
                     class="list-group-item list-group-item-action d-flex justify-content-start align-items-center text-primary">
                     <i class="fas fa-fw fa-comments mr-3"></i> Data Master Chatbot
                 </a>
