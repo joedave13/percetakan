@@ -19,6 +19,10 @@
                     class="list-group-item list-group-item-action d-flex justify-content-start align-items-center text-primary">
                     <i class="fas fa-fw fa-comments mr-3"></i> Data Master Chatbot
                 </a>
+                <a href="master_hitung.php"
+                    class="list-group-item list-group-item-action d-flex justify-content-start align-items-center text-primary">
+                    <i class="fas fa-fw fa-comments mr-3"></i> Perhitungan TF-IDF
+                </a>
             </ul>
         </div>
         <!-- End sidebar -->
