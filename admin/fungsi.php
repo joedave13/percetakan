@@ -214,7 +214,7 @@ function hitungSimilarity($query)
 function ambilCache($keyword)
 {
     include '../koneksi.php';
-    $resCache = mysqli_query($koneksi, "SELECT * FROM tb_cache WHERE query = '$keyword' ORDER BY nilai DESC");
+    $resCache = mysqli_query($koneksi, "SELECT * FROM tb_cache WHERE query = '$keyword' ORDER BY nilai DESC LIMIT 1");
     $num_rows = mysqli_num_rows($resCache);
 
     if ($num_rows > 0) {
@@ -238,7 +238,7 @@ function ambilCache($keyword)
     else {
         hitungSimilarity($keyword);
         
-        $resCache = mysqli_query($koneksi, "SELECT * FROM tb_cache WHERE query = '$keyword' ORDER BY nilai DESC");
+        $resCache = mysqli_query($koneksi, "SELECT * FROM tb_cache WHERE query = '$keyword' ORDER BY nilai DESC LIMIT 1");
         $num_rows = mysqli_num_rows($resCache);
 
         while ($rowCache = mysqli_fetch_array($resCache)) {
