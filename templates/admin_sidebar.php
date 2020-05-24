@@ -23,6 +23,10 @@
                     class="list-group-item list-group-item-action d-flex justify-content-start align-items-center text-primary">
                     <i class="fas fa-fw fa-comments mr-3"></i> Perhitungan TF-IDF
                 </a>
+                <a href="coba_chat.php"
+                    class="list-group-item list-group-item-action d-flex justify-content-start align-items-center text-primary">
+                    <i class="fas fa-fw fa-comment-alt mr-3"></i> Percobaan Chatbot
+                </a>
             </ul>
         </div>
         <!-- End sidebar -->

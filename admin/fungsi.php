@@ -144,3 +144,117 @@ function panjangVektor()
         $resInsertVektor = mysqli_query($koneksi, "INSERT INTO tb_vektor (doc_id, panjang) VALUES ($docId, $panjangVektor)");
     }
 }
+
+function hitungSimilarity($query)
+{
+    include '../koneksi.php';
+    //Ambil jumlah total dokumen yang telah diindex
+    $resn = mysqli_query($koneksi, "SELECT COUNT(*) AS n FROM tb_vektor");
+    $rown = mysqli_fetch_array($resn);
+    $n = $rown['n'];
+
+    //Terapkan preprocessing pada query
+    $aquery = explode(" ", $query);
+
+    //Hitung panjang vektor query
+    $panjangQuery = 0;
+    $aBobotQuery = array();
+
+    for ($i = 0; $i < count($aquery); $i++) { 
+        //hitung bobot untuk term ke-i pada query, log(n/N);
+        //hitung jumlah dokumen yang mengandung term tersebut
+        $resNTerm = mysqli_query($koneksi, "SELECT COUNT(*) AS n FROM tb_index WHERE term = '$aquery[$i]'");
+        $rowNTerm = mysqli_fetch_array($resNTerm);
+        $NTerm = $rowNTerm['n'];
+        //idf = 0
+        $idf = 0;
+        if ($NTerm > 0) {
+            $idf = log($n / $NTerm);
+            //Simpan di array
+            $aBobotQuery[] = $idf;
+
+            $panjangQuery = $panjangQuery + $idf * $idf;
+        }
+    }
+
+    $panjangQuery = sqrt($panjangQuery);
+    $jumlah_mirip = 0;
+
+    //Ambil setiap term dari doc id, bandingkan dengan query
+    $resDocId = mysqli_query($koneksi, "SELECT * FROM tb_vektor ORDER BY doc_id");
+    while ($rowDocId = mysqli_fetch_array($resDocId)) {
+        $dotproduct = 0;
+
+        $docId = $rowDocId['doc_id'];
+        $panjangDocId = $rowDocId['panjang'];
+
+        $resTerm = mysqli_query($koneksi, "SELECT * FROM tb_index WHERE id_doc = $docId");
+        while ($rowTerm = mysqli_fetch_array($resTerm)) {
+            for ($i = 0; $i < count($aquery); $i++) { 
+                //Jika term sama
+                if ($rowTerm['term'] == $aquery[$i]) {
+                    $dotproduct = $dotproduct + $rowTerm['bobot'] * $aBobotQuery[$i];
+                }
+            }
+        }
+
+        if ($dotproduct > 0) {
+            $similarity = $dotproduct / ($panjangQuery * $panjangDocId);
+            //Simpan kemiripan ke tabel cache
+            $resInsertCache = mysqli_query($koneksi, "INSERT INTO tb_cache (query, doc_id, nilai) VALUES ('$query', $docId, $similarity)");
+            $jumlah_mirip++;
+        }
+    }
+
+    if ($jumlah_mirip == 0) {
+        $resInsertCache = mysqli_query($koneksi, "INSERT INTO tb_cache (query, doc_id, nilai) VALUES ('$query', 0, 0)");
+    }
+}
+
+function ambilCache($keyword)
+{
+    include '../koneksi.php';
+    $resCache = mysqli_query($koneksi, "SELECT * FROM tb_cache WHERE query = '$keyword' ORDER BY nilai DESC");
+    $num_rows = mysqli_num_rows($resCache);
+
+    if ($num_rows > 0) {
+        //Tampilkan respon
+        while ($rowCache = mysqli_fetch_array($resCache)) {
+            $doc_id = $rowCache['doc_id'];
+            $nilai_similarity = $rowCache['nilai'];
+
+            if ($doc_id != 0) {
+                $responChat = mysqli_query($koneksi, "SELECT * FROM tb_dokumen WHERE id = $doc_id");
+                $rowChat = mysqli_fetch_array($responChat);
+
+                $answer = $rowChat['dokumen'];
+                print($answer);
+            }
+            else {
+                print('Jawaban tidak ditemukan...');
+            }
+        }
+    }
+    else {
+        hitungSimilarity($keyword);
+        
+        $resCache = mysqli_query($koneksi, "SELECT * FROM tb_cache WHERE query = '$keyword' ORDER BY nilai DESC");
+        $num_rows = mysqli_num_rows($resCache);
+
+        while ($rowCache = mysqli_fetch_array($resCache)) {
+            $doc_id = $rowCache['doc_id'];
+            $nilai_similarity = $rowCache['nilai'];
+
+            if ($doc_id != 0) {
+                $responChat = mysqli_query($koneksi, "SELECT * FROM tb_dokumen WHERE id = $doc_id");
+                $rowChat = mysqli_fetch_array($responChat);
+
+                $answer = $rowChat['dokumen'];
+                print($answer);
+            }
+            else {
+                print('Jawaban tidak ditemukan...');
+            }
+        }
+    }
+}
