@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 24, 2020 at 01:59 PM
+-- Generation Time: May 27, 2020 at 03:55 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.1
 
@@ -61,16 +61,43 @@ CREATE TABLE `tb_cache` (
 
 INSERT INTO `tb_cache` (`id`, `query`, `doc_id`, `nilai`) VALUES
 (1, 'selamat pagi', 1, 0.999999),
-(2, 'selamat sore', 1, 0.707106),
 (4, 'jam berapa toko buka', 2, 0.285453),
 (5, 'jam toko buka', 2, 0.285453),
 (6, 'harga banner korea', 12, 0.851645),
 (7, 'harga art paper', 12, 0.491698),
-(8, 'halo', 13, 0.513458),
-(13, 'harga cetak banner glossy', 2, 0.00745103),
-(14, 'harga cetak banner glossy', 12, 0.316488),
-(15, 'harga cetak banner glossy', 13, 0.00745103),
-(16, 'harga cetak banner glossy', 14, 0.79064);
+(53, 'harga cetak banner glossy', 2, 0.0113149),
+(54, 'harga cetak banner glossy', 12, 0.305589),
+(55, 'harga cetak banner glossy', 13, 0.0116249),
+(56, 'harga cetak banner glossy', 14, 0.787619),
+(57, 'harga cetak banner glossy', 15, 0.0956988),
+(58, 'cetak stiker cina', 2, 0.0101516),
+(59, 'cetak stiker cina', 12, 0.0129304),
+(60, 'cetak stiker cina', 13, 0.0104297),
+(61, 'cetak stiker cina', 14, 0.0129304),
+(62, 'cetak stiker cina', 15, 0.794041),
+(63, 'hai', 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_cetakan`
+--
+
+CREATE TABLE `tb_cetakan` (
+  `id` int(11) NOT NULL,
+  `nama` varchar(255) NOT NULL,
+  `harga` float NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tb_cetakan`
+--
+
+INSERT INTO `tb_cetakan` (`id`, `nama`, `harga`) VALUES
+(1, 'Banner Biasa', 18000),
+(2, 'Banner Glossy', 25000),
+(3, 'Banner Korea', 30000),
+(5, 'Stiker Cina', 55000);
 
 -- --------------------------------------------------------
 
@@ -92,7 +119,9 @@ INSERT INTO `tb_dokumen` (`id`, `dokumen`) VALUES
 (2, 'percetakan radja printing buka jam 7 pagi'),
 (12, 'mencetak banner korea harganya 30000'),
 (13, 'halo, selamat datang di percetakan radja printing'),
-(14, 'mencetak banner glossy harga 25000');
+(14, 'mencetak banner glossy harga 25000'),
+(15, 'cetak stiker cina harganya 55000'),
+(16, 'selamat sore');
 
 -- --------------------------------------------------------
 
@@ -113,32 +142,39 @@ CREATE TABLE `tb_index` (
 --
 
 INSERT INTO `tb_index` (`id`, `term`, `id_doc`, `jumlah`, `bobot`) VALUES
-(1, 'selamat', 1, 1, 0.916291),
-(2, 'pagi', 1, 1, 0.916291),
-(3, 'cetak', 2, 1, 0.223144),
-(4, 'radja', 2, 1, 0.916291),
-(5, 'printing', 2, 1, 0.916291),
-(6, 'buka', 2, 1, 1.60944),
-(7, 'jam', 2, 1, 1.60944),
-(8, '7', 2, 1, 1.60944),
-(9, 'pagi', 2, 1, 0.916291),
-(10, 'cetak', 12, 1, 0.223144),
-(11, 'banner', 12, 1, 0.916291),
-(12, 'korea', 12, 1, 1.60944),
-(13, 'harga', 12, 1, 0.916291),
-(14, '30000', 12, 1, 1.60944),
-(15, 'halo', 13, 1, 1.60944),
-(16, 'selamat', 13, 1, 0.916291),
-(17, 'datang', 13, 1, 1.60944),
-(18, 'di', 13, 1, 1.60944),
-(19, 'cetak', 13, 1, 0.223144),
-(20, 'radja', 13, 1, 0.916291),
-(21, 'printing', 13, 1, 0.916291),
-(22, 'cetak', 14, 1, 0.223144),
-(23, 'banner', 14, 1, 0.916291),
-(24, 'glossy', 14, 1, 1.60944),
-(25, 'harga', 14, 1, 0.916291),
-(26, '25000', 14, 1, 1.60944);
+(1, 'selamat', 1, 1, 0.847298),
+(2, 'pagi', 1, 1, 1.25276),
+(3, 'cetak', 2, 1, 0.336472),
+(4, 'radja', 2, 1, 1.25276),
+(5, 'printing', 2, 1, 1.25276),
+(6, 'buka', 2, 1, 1.94591),
+(7, 'jam', 2, 1, 1.94591),
+(8, '7', 2, 1, 1.94591),
+(9, 'pagi', 2, 1, 1.25276),
+(10, 'cetak', 12, 1, 0.336472),
+(11, 'banner', 12, 1, 1.25276),
+(12, 'korea', 12, 1, 1.94591),
+(13, 'harga', 12, 1, 0.847298),
+(14, '30000', 12, 1, 1.94591),
+(15, 'halo', 13, 1, 1.94591),
+(16, 'selamat', 13, 1, 0.847298),
+(17, 'datang', 13, 1, 1.94591),
+(18, 'di', 13, 1, 1.94591),
+(19, 'cetak', 13, 1, 0.336472),
+(20, 'radja', 13, 1, 1.25276),
+(21, 'printing', 13, 1, 1.25276),
+(22, 'cetak', 14, 1, 0.336472),
+(23, 'banner', 14, 1, 1.25276),
+(24, 'glossy', 14, 1, 1.94591),
+(25, 'harga', 14, 1, 0.847298),
+(26, '25000', 14, 1, 1.94591),
+(27, 'cetak', 15, 1, 0.336472),
+(28, 'stiker', 15, 1, 1.94591),
+(29, 'cina', 15, 1, 1.94591),
+(30, 'harga', 15, 1, 0.847298),
+(31, '55000', 15, 1, 1.94591),
+(32, 'selamat', 16, 1, 0.847298),
+(33, 'sore', 16, 1, 1.94591);
 
 -- --------------------------------------------------------
 
@@ -178,11 +214,13 @@ CREATE TABLE `tb_vektor` (
 --
 
 INSERT INTO `tb_vektor` (`doc_id`, `panjang`) VALUES
-(1, 1.29583),
-(2, 3.2155),
-(12, 2.62861),
-(13, 3.2155),
-(14, 2.62861);
+(1, 1.51239),
+(2, 4.02258),
+(12, 3.15811),
+(13, 3.91531),
+(14, 3.15811),
+(15, 3.49154),
+(16, 2.12238);
 
 --
 -- Indexes for dumped tables
@@ -198,6 +236,12 @@ ALTER TABLE `tb_admin`
 -- Indexes for table `tb_cache`
 --
 ALTER TABLE `tb_cache`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tb_cetakan`
+--
+ALTER TABLE `tb_cetakan`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -238,19 +282,25 @@ ALTER TABLE `tb_admin`
 -- AUTO_INCREMENT for table `tb_cache`
 --
 ALTER TABLE `tb_cache`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
+
+--
+-- AUTO_INCREMENT for table `tb_cetakan`
+--
+ALTER TABLE `tb_cetakan`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `tb_dokumen`
 --
 ALTER TABLE `tb_dokumen`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `tb_index`
 --
 ALTER TABLE `tb_index`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `tb_stem`
@@ -262,7 +312,7 @@ ALTER TABLE `tb_stem`
 -- AUTO_INCREMENT for table `tb_vektor`
 --
 ALTER TABLE `tb_vektor`
-  MODIFY `doc_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `doc_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
