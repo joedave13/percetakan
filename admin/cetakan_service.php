@@ -8,10 +8,10 @@
 
             $query = mysqli_query($koneksi, "INSERT INTO tb_cetakan VALUES (null, '$nama', '$harga')");
             if ($query) {
-                echo "Tambah Cetakan Berhasil!";
+                echo "Tambah Data Cetakan Berhasil!";
             }
             else {
-                echo "Tambah Cetakan Gagal :" . mysqli_error($koneksi);
+                echo "Tambah Data Cetakan Gagal :" . mysqli_error($koneksi);
             }
         break;
         
@@ -23,10 +23,22 @@
             $query = mysqli_query($koneksi, "UPDATE tb_cetakan SET nama = '$nama', harga = '$harga' WHERE id = '$idCetakan'");
 
             if ($query) {
-                echo "Edit Cetakan Berhasil!";
+                echo "Edit Data Cetakan Berhasil!";
             }
             else {
-                echo "Edit Cetakan Gagal :" . mysqli_error($koneksi);
+                echo "Edit Data Cetakan Gagal :" . mysqli_error($koneksi);
+            }
+        break;
+
+        case 'delete':
+            $idCetakan = $_POST['idCetakan'];
+            $query = mysqli_query($koneksi, "DELETE FROM tb_cetakan WHERE id = '$idCetakan'");
+
+            if ($query) {
+                echo "Delete Data Cetakan Berhasil!";
+            }
+            else {
+                echo "Delete Data Cetakan Gagal :" . mysqli_error($koneksi);
             }
         break;
     }

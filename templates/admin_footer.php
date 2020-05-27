@@ -74,8 +74,40 @@
                     loadDataCetakan();
                 }
             })
-        })
-    })
+        });
+
+        //Hapus data cetakan berdasarkan id
+        $("#contentCetakan").on("click", "#deleteCetakan", function () {
+            Swal.fire({
+                title: 'Apa anda yakin?',
+                text: "Anda tidak dapat membatalkan ini!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Hapus'
+            }).then((result) => {
+                if (result.value) {
+                    let idCetakan = $(this).attr("value");
+                    $.ajax({
+                        url: 'cetakan_service.php?action=delete',
+                        type: 'post',
+                        data: {
+                            idCetakan: idCetakan
+                        },
+                        success: function (data) {
+                            Swal.fire(
+                                'Delete Success!',
+                                data,
+                                'success'
+                            );
+                            loadDataCetakan();
+                        }
+                    });
+                }
+            });
+        });
+    });
 
     function loadDataCetakan() {
         $.ajax({
