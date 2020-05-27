@@ -20,6 +20,21 @@
             })
         });
 
+        //Load form edit cetakan
+        $("#contentCetakan").on("click", "#editCetakan", function () {
+            let idCetakan = $(this).attr("value");
+            $.ajax({
+                url: 'cetakan_edit.php',
+                type: 'get',
+                data: {
+                    idCetakan: idCetakan
+                },
+                success: function (data) {
+                    $('#contentCetakan').html(data);
+                }
+            })
+        });
+
         //Kembali ke halaman daftar cetakan
         $("#contentCetakan").on("click", "#backCetakan", function () {
             loadDataCetakan();
@@ -34,7 +49,7 @@
                 data: $(this).serialize(),
                 success: function (data) {
                     Swal.fire(
-                        'Success!',
+                        'Insert Success!',
                         data,
                         'success'
                     );
@@ -42,6 +57,24 @@
                 }
             })
         });
+
+        //Edit data cetakan
+        $("#contentCetakan").on("submit", "#formEditCetakan", function (e) {
+            e.preventDefault();
+            $.ajax({
+                url: 'cetakan_service.php?action=edit',
+                type: 'post',
+                data: $(this).serialize(),
+                success: function (data) {
+                    Swal.fire(
+                        'Edit Success!',
+                        data,
+                        'info'
+                    );
+                    loadDataCetakan();
+                }
+            })
+        })
     })
 
     function loadDataCetakan() {

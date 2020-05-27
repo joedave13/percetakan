@@ -15,7 +15,8 @@
                 <label for="harga"><b>Harga</b></label>
                 <input type="text" name="harga" id="harga" class="form-control" placeholder="Harga Cetakan..." required>
             </div>
-            <input type="submit" name="simpanCetakan" id="simpanCetakan" value="Submit" class="btn btn-primary">
+            <input type="submit" name="simpanCetakan" id="simpanCetakan" value="Submit"
+                class="btn btn-block btn-primary">
         </div>
     </form>
 </div>
