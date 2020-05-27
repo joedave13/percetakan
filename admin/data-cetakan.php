@@ -1,11 +1,7 @@
 <h3>Data Layanan Cetakan</h3>
-<div class="row my-3">
-    <div class="col-md-4">
-        <button id="addCetakan" class="btn btn-primary">
-            <i class="fas fa-fw fa-plus"></i> Tambah Data Cetakan
-        </button>
-    </div>
-</div>
+<button id="addCetakan" class="btn btn-primary my-3">
+    <i class="fas fa-fw fa-plus"></i> Tambah Data Cetakan
+</button>
 <div class="card">
     <div class="card-body">
         <table class="table table-striped">
