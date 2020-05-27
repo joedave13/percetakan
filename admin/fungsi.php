@@ -21,7 +21,7 @@ function preproses($teks)
     $teks = strtolower(trim($teks));
 
     //Stopword remove
-    $stoplist = array("yang", "juga", "dari", "dia", "kami", "kamu", "ini", "itu", "atau", "dan", "tersebut", "pada", "dengan", "adalah", "yaitu", "ke");
+    $stoplist = array("yang", "juga", "dari", "dia", "kami", "kamu", "ini", "itu", "atau", "dan", "tersebut", "pada", "dengan", "adalah", "yaitu");
 
     foreach ($stoplist as $i => $value) {
         $teks = str_replace($stoplist[$i], "", $teks);
@@ -99,13 +99,13 @@ function hitungBobot()
         $term = $rowBobot['term'];
         $tf = $rowBobot['jumlah'];
         $id = $rowBobot['id'];
-        
+
         //Jumlah dokumen yang mengandung term tersebut (N)
         $resNTerm = mysqli_query($koneksi, "SELECT COUNT(*) AS N FROM tb_index WHERE term = '$term'");
         $rowNTerm = mysqli_fetch_array($resNTerm);
         $NTerm = $rowNTerm['N'];
-        
-        $w = $tf * log($n/$NTerm);
+
+        $w = $tf * log($n / $NTerm);
 
         //Update bobot
         $resUpdateBobot = mysqli_query($koneksi, "UPDATE tb_index SET bobot = $w WHERE id = $id");
@@ -160,7 +160,7 @@ function hitungSimilarity($query)
     $panjangQuery = 0;
     $aBobotQuery = array();
 
-    for ($i = 0; $i < count($aquery); $i++) { 
+    for ($i = 0; $i < count($aquery); $i++) {
         //hitung bobot untuk term ke-i pada query, log(n/N);
         //hitung jumlah dokumen yang mengandung term tersebut
         $resNTerm = mysqli_query($koneksi, "SELECT COUNT(*) AS n FROM tb_index WHERE term = '$aquery[$i]'");
@@ -190,7 +190,7 @@ function hitungSimilarity($query)
 
         $resTerm = mysqli_query($koneksi, "SELECT * FROM tb_index WHERE id_doc = $docId");
         while ($rowTerm = mysqli_fetch_array($resTerm)) {
-            for ($i = 0; $i < count($aquery); $i++) { 
+            for ($i = 0; $i < count($aquery); $i++) {
                 //Jika term sama
                 if ($rowTerm['term'] == $aquery[$i]) {
                     $dotproduct = $dotproduct + $rowTerm['bobot'] * $aBobotQuery[$i];
@@ -229,15 +229,13 @@ function ambilCache($keyword)
 
                 $answer = $rowChat['dokumen'];
                 print($answer);
-            }
-            else {
+            } else {
                 print('Jawaban tidak ditemukan...');
             }
         }
-    }
-    else {
+    } else {
         hitungSimilarity($keyword);
-        
+
         $resCache = mysqli_query($koneksi, "SELECT * FROM tb_cache WHERE query = '$keyword' ORDER BY nilai DESC LIMIT 1");
         $num_rows = mysqli_num_rows($resCache);
 
@@ -251,8 +249,7 @@ function ambilCache($keyword)
 
                 $answer = $rowChat['dokumen'];
                 print($answer);
-            }
-            else {
+            } else {
                 print('Jawaban tidak ditemukan...');
             }
         }

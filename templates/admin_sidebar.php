@@ -3,7 +3,7 @@
         <!-- Sidebar -->
         <div class="col-md-3">
             <ul class="list-group">
-                <a href="#"
+                <a href="cetakan_index.php"
                     class="list-group-item list-group-item-action d-flex justify-content-start align-items-center text-primary">
                     <i class="fas fa-fw fa-sticky-note mr-3"></i> Data Cetakan
                 </a>
