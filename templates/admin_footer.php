@@ -108,6 +108,40 @@
                 }
             });
         });
+
+        //Load form add pelanggan
+        $("#contentPelanggan").on("click", "#addPelanggan", function () {
+            $.ajax({
+                url: 'pelanggan_input.php',
+                type: 'get',
+                success: function (data) {
+                    $('#contentPelanggan').html(data);
+                }
+            });
+        });
+
+        //Kembali ke halaman daftar pelanggan
+        $("#contentPelanggan").on("click", "#backPelanggan", function () {
+            loadDataPelanggan();
+        });
+
+        //Simpan data pelanggan
+        $("#contentPelanggan").on("submit", "#formAddPelanggan", function (e) {
+            e.preventDefault();
+            $.ajax({
+                url: 'pelanggan_service.php?action=save',
+                type: 'post',
+                data: $(this).serialize(),
+                success: function (data) {
+                    Swal.fire(
+                        'Insert Success!',
+                        data,
+                        'success'
+                    );
+                    loadDataPelanggan();
+                }
+            })
+        });
     });
 
     function loadDataCetakan() {
