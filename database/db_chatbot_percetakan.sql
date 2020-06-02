@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.1
+-- version 4.9.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 27, 2020 at 03:55 PM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.1
+-- Generation Time: Jun 02, 2020 at 05:11 PM
+-- Server version: 10.4.8-MariaDB
+-- PHP Version: 7.3.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -179,6 +179,29 @@ INSERT INTO `tb_index` (`id`, `term`, `id_doc`, `jumlah`, `bobot`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tb_pelanggan`
+--
+
+CREATE TABLE `tb_pelanggan` (
+  `pelanggan_id` int(11) NOT NULL,
+  `pelanggan_nama` varchar(255) NOT NULL,
+  `pelanggan_jk` varchar(50) NOT NULL,
+  `pelanggan_alamat` text NOT NULL,
+  `pelanggan_hp` varchar(128) NOT NULL,
+  `pelanggan_email` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tb_pelanggan`
+--
+
+INSERT INTO `tb_pelanggan` (`pelanggan_id`, `pelanggan_nama`, `pelanggan_jk`, `pelanggan_alamat`, `pelanggan_hp`, `pelanggan_email`) VALUES
+(1, 'Joshua Davian Kristanto', 'Pria', 'Jl. Adi Sucipto Gg. Jinitren No. 82 Kediri', '082325182769', 'joshuadavian@gmail.com'),
+(3, 'Yohana Bernike', 'Wanita', 'Kediri', '082264668060', 'yohana@gmail.com');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tb_stem`
 --
 
@@ -257,6 +280,12 @@ ALTER TABLE `tb_index`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `tb_pelanggan`
+--
+ALTER TABLE `tb_pelanggan`
+  ADD PRIMARY KEY (`pelanggan_id`);
+
+--
 -- Indexes for table `tb_stem`
 --
 ALTER TABLE `tb_stem`
@@ -301,6 +330,12 @@ ALTER TABLE `tb_dokumen`
 --
 ALTER TABLE `tb_index`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+
+--
+-- AUTO_INCREMENT for table `tb_pelanggan`
+--
+ALTER TABLE `tb_pelanggan`
+  MODIFY `pelanggan_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tb_stem`
