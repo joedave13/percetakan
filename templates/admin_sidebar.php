@@ -7,9 +7,9 @@
                     class="list-group-item list-group-item-action d-flex justify-content-start align-items-center text-primary">
                     <i class="fas fa-fw fa-sticky-note mr-3"></i> Data Cetakan
                 </a>
-                <a href="#"
+                <a href="pelanggan_index.php"
                     class="list-group-item list-group-item-action d-flex justify-content-start align-items-center text-primary">
-                    <i class="fas fa-fw fa-shopping-bag mr-3"></i> Data Barang
+                    <i class="fas fa-fw fa-users mr-3"></i> Data Pelanggan
                 </a>
                 <a href="#"
                     class="list-group-item list-group-item-action d-flex justify-content-start align-items-center text-primary">

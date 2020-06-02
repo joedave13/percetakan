@@ -10,16 +10,16 @@
                     <th width="5%">No.</th>
                     <th>Jenis Cetakan</th>
                     <th>Harga</th>
-                    <th>Action</th>
+                    <th width="25%">Action</th>
                 </tr>
             </thead>
             <tbody>
                 <?php 
-                        include '../koneksi.php';
-                        $no = 1;
-                        $query = mysqli_query($koneksi, "SELECT * FROM tb_cetakan") or die(mysqli_error($koneksi));
-                        while($result = mysqli_fetch_array($query)){
-                    ?>
+                    include '../koneksi.php';
+                    $no = 1;
+                    $query = mysqli_query($koneksi, "SELECT * FROM tb_cetakan") or die(mysqli_error($koneksi));
+                    while($result = mysqli_fetch_array($query)){
+                ?>
                 <tr>
                     <td><?= $no++; ?></td>
                     <td><?= $result['nama']; ?></td>

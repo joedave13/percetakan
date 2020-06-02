@@ -2,12 +2,13 @@
 </div>
 
 <script src="../assets/js/jquery-3.4.1.min.js"></script>
-<script src="../assets/js/bootstrap.js"></script>
+<script src="../assets/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 <script type="text/javascript">
     $(document).ready(function () {
         //Load data
         loadDataCetakan();
+        loadDataPelanggan();
 
         //Load form add cetakan
         $("#contentCetakan").on("click", "#addCetakan", function () {
@@ -115,6 +116,16 @@
             type: 'get',
             success: function (data) {
                 $('#contentCetakan').html(data);
+            }
+        });
+    }
+
+    function loadDataPelanggan() {
+        $.ajax({
+            url: 'data-pelanggan.php',
+            type: 'get',
+            success: function (data) {
+                $('#contentPelanggan').html(data);
             }
         })
     }
