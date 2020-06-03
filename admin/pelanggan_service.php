@@ -17,5 +17,23 @@
                 echo "Tambah Data Pelanggan Gagal :" . mysqli_error($koneksi);
             }
         break;
+
+        case 'edit':
+            $idPelanggan = $_POST['id'];
+            $nama = $_POST['nama'];
+            $jk = $_POST['jk'];
+            $alamat = $_POST['alamat'];
+            $hp = $_POST['hp'];
+            $email = $_POST['email'];
+
+            $query = mysqli_query($koneksi, "UPDATE tb_pelanggan SET pelanggan_nama = '$nama', pelanggan_jk = '$jk', pelanggan_alamat = '$alamat', pelanggan_hp = '$hp', pelanggan_email = '$email' WHERE pelanggan_id = '$idPelanggan'");
+            
+            if ($query) {
+                echo "Edit Data Pelanggan Berhasil!";
+            }
+            else {
+                echo "Edit Data Pelanggan Gagal :" . mysqli_error($koneksi);
+            }
+        break;
     }
 ?>

@@ -120,6 +120,21 @@
             });
         });
 
+        //Load form edit pelanggan
+        $("#contentPelanggan").on("click", "#editPelanggan", function () {
+            let idPelanggan = $(this).attr("value");
+            $.ajax({
+                url: 'pelanggan_edit.php',
+                type: 'get',
+                data: {
+                    idPelanggan: idPelanggan
+                },
+                success: function (data) {
+                    $('#contentPelanggan').html(data);
+                }
+            })
+        });
+
         //Kembali ke halaman daftar pelanggan
         $("#contentPelanggan").on("click", "#backPelanggan", function () {
             loadDataPelanggan();
@@ -137,6 +152,24 @@
                         'Insert Success!',
                         data,
                         'success'
+                    );
+                    loadDataPelanggan();
+                }
+            })
+        });
+
+        //Edit data pelanggan
+        $("#contentPelanggan").on("submit", "#formEditPelanggan", function (e) {
+            e.preventDefault();
+            $.ajax({
+                url: 'pelanggan_service.php?action=edit',
+                type: 'post',
+                data: $(this).serialize(),
+                success: function (data) {
+                    Swal.fire(
+                        'Edit Success!',
+                        data,
+                        'info'
                     );
                     loadDataPelanggan();
                 }
