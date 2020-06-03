@@ -175,6 +175,38 @@
                 }
             })
         });
+
+        //Hapus data pelanggan berdasarkan id
+        $("#contentPelanggan").on("click", "#deletePelanggan", function () {
+            Swal.fire({
+                title: 'Apa anda yakin?',
+                text: "Anda tidak dapat membatalkan ini!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Hapus'
+            }).then((result) => {
+                if (result.value) {
+                    let idPelanggan = $(this).attr("value");
+                    $.ajax({
+                        url: 'pelanggan_service.php?action=delete',
+                        type: 'post',
+                        data: {
+                            idPelanggan: idPelanggan
+                        },
+                        success: function (data) {
+                            Swal.fire(
+                                'Delete Success!',
+                                data,
+                                'success'
+                            );
+                            loadDataPelanggan();
+                        }
+                    });
+                }
+            });
+        });
     });
 
     function loadDataCetakan() {

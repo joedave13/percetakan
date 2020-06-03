@@ -35,5 +35,17 @@
                 echo "Edit Data Pelanggan Gagal :" . mysqli_error($koneksi);
             }
         break;
+
+        case 'delete':
+            $idPelanggan = $_POST['idPelanggan'];
+            $query = mysqli_query($koneksi, "DELETE FROM tb_pelanggan WHERE pelanggan_id = '$idPelanggan'");
+
+            if ($query) {
+                echo "Delete Data Pelanggan Berhasil!";
+            }
+            else {
+                echo "Delete Data Pelanggan Gagal :" . mysqli_error($koneksi);
+            }
+        break;
     }
 ?>
