@@ -9,6 +9,7 @@
         //Load data
         loadDataCetakan();
         loadDataPelanggan();
+        loadDataTransaksi();
 
         //Load form add cetakan
         $("#contentCetakan").on("click", "#addCetakan", function () {
@@ -226,7 +227,17 @@
             success: function (data) {
                 $('#contentPelanggan').html(data);
             }
-        })
+        });
+    }
+
+    function loadDataTransaksi() {
+        $.ajax({
+            url: 'data-transaksi.php',
+            type: 'get',
+            success: function (data) {
+                $('#contentTransaksi').html(data);
+            }
+        });
     }
 </script>
 </body>
