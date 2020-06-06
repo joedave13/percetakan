@@ -3,6 +3,7 @@
 
 <script src="../assets/js/jquery-3.4.1.min.js"></script>
 <script src="../assets/js/bootstrap.bundle.min.js"></script>
+<script src="../assets/js/select2.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 <script type="text/javascript">
     $(document).ready(function () {
@@ -208,6 +209,58 @@
                 }
             });
         });
+
+        //Load form add transaksi
+        $("#contentTransaksi").on("click", "#addTransaksi", function () {
+            $.ajax({
+                url: 'transaksi_input.php',
+                type: 'get',
+                success: function (data) {
+                    $('#contentTransaksi').html(data);
+                    $('.select-pelanggan').select2({
+                        theme: 'bootstrap4'
+                    });
+                    $('.select-barang').select2({
+                        theme: 'bootstrap4'
+                    });
+                }
+            });
+        });
+
+        var i = 1;
+
+        $("#contentTransaksi").on("click", "#addTransaksiBarang", function () {
+            i++;
+            $.post('form_detail_barang.php', function (data) {
+                $('#tbl_transaksi').append(`<tr>` + data + `</tr>`);
+                $('.select-barang').select2({
+                    theme: 'bootstrap4'
+                });
+            })
+        });
+
+        //Simpan data transaksi
+        $("#contentTransaksi").on("submit", "#formAddCetakan", function (e) {
+            e.preventDefault();
+            $.ajax({
+                url: 'transaksi_service.php?action=save',
+                type: 'post',
+                data: $(this).serialize(),
+                success: function (data) {
+                    Swal.fire(
+                        'Insert Success!',
+                        data,
+                        'success'
+                    );
+                    loadDataTransaksi();
+                }
+            })
+        });
+
+        //Kembali ke halaman daftar transaksi
+        $("#contentTransaksi").on("click", "#backTransaksi", function () {
+            loadDataTransaksi();
+        });
     });
 
     function loadDataCetakan() {
@@ -236,10 +289,12 @@
             type: 'get',
             success: function (data) {
                 $('#contentTransaksi').html(data);
+
             }
         });
     }
 </script>
+
 </body>
 
 </html>
