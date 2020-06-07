@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 02, 2020 at 05:11 PM
+-- Generation Time: Jun 07, 2020 at 03:07 AM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.10
 
@@ -102,6 +102,28 @@ INSERT INTO `tb_cetakan` (`id`, `nama`, `harga`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tb_detail_transaksi`
+--
+
+CREATE TABLE `tb_detail_transaksi` (
+  `detail_id` int(11) NOT NULL,
+  `detail_transaksi` int(11) NOT NULL,
+  `detail_barang` int(11) NOT NULL,
+  `detail_panjang` int(11) NOT NULL,
+  `detail_lebar` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tb_detail_transaksi`
+--
+
+INSERT INTO `tb_detail_transaksi` (`detail_id`, `detail_transaksi`, `detail_barang`, `detail_panjang`, `detail_lebar`) VALUES
+(26, 28, 1, 5, 5),
+(27, 28, 2, 5, 5);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tb_dokumen`
 --
 
@@ -196,8 +218,9 @@ CREATE TABLE `tb_pelanggan` (
 --
 
 INSERT INTO `tb_pelanggan` (`pelanggan_id`, `pelanggan_nama`, `pelanggan_jk`, `pelanggan_alamat`, `pelanggan_hp`, `pelanggan_email`) VALUES
-(1, 'Joshua Davian Kristanto', 'Pria', 'Jl. Adi Sucipto Gg. Jinitren No. 82 Kediri', '082325182769', 'joshuadavian@gmail.com'),
-(3, 'Yohana Bernike', 'Wanita', 'Kediri', '082264668060', 'yohana@gmail.com');
+(1, 'Joshua Davian', 'Pria', 'Jl. Adi Sucipto Gg. Jinitren No. 82 Kediri', '082325182769', 'joshuadavian@gmail.com'),
+(4, 'Yohana Bernike', 'Wanita', 'Kediri', '082325182769', 'yohanabernike@gmail.com'),
+(5, 'Trianta Almira', 'Wanita', 'Probolinggo', '082325182769', 'trianta@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -220,6 +243,26 @@ INSERT INTO `tb_stem` (`id`, `term`, `stem`) VALUES
 (2, 'mencetak', 'cetak'),
 (3, 'harganya', 'harga'),
 (4, 'membeli', 'beli');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_transaksi`
+--
+
+CREATE TABLE `tb_transaksi` (
+  `transaksi_id` int(11) NOT NULL,
+  `transaksi_tgl` date NOT NULL,
+  `transaksi_pelanggan` int(11) NOT NULL,
+  `transaksi_status` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tb_transaksi`
+--
+
+INSERT INTO `tb_transaksi` (`transaksi_id`, `transaksi_tgl`, `transaksi_pelanggan`, `transaksi_status`) VALUES
+(28, '2020-06-07', 5, 1);
 
 -- --------------------------------------------------------
 
@@ -268,6 +311,12 @@ ALTER TABLE `tb_cetakan`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `tb_detail_transaksi`
+--
+ALTER TABLE `tb_detail_transaksi`
+  ADD PRIMARY KEY (`detail_id`);
+
+--
 -- Indexes for table `tb_dokumen`
 --
 ALTER TABLE `tb_dokumen`
@@ -290,6 +339,12 @@ ALTER TABLE `tb_pelanggan`
 --
 ALTER TABLE `tb_stem`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tb_transaksi`
+--
+ALTER TABLE `tb_transaksi`
+  ADD PRIMARY KEY (`transaksi_id`);
 
 --
 -- Indexes for table `tb_vektor`
@@ -320,6 +375,12 @@ ALTER TABLE `tb_cetakan`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
+-- AUTO_INCREMENT for table `tb_detail_transaksi`
+--
+ALTER TABLE `tb_detail_transaksi`
+  MODIFY `detail_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+
+--
 -- AUTO_INCREMENT for table `tb_dokumen`
 --
 ALTER TABLE `tb_dokumen`
@@ -335,13 +396,19 @@ ALTER TABLE `tb_index`
 -- AUTO_INCREMENT for table `tb_pelanggan`
 --
 ALTER TABLE `tb_pelanggan`
-  MODIFY `pelanggan_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `pelanggan_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `tb_stem`
 --
 ALTER TABLE `tb_stem`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `tb_transaksi`
+--
+ALTER TABLE `tb_transaksi`
+  MODIFY `transaksi_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `tb_vektor`
