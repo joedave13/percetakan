@@ -261,6 +261,20 @@
         $("#contentTransaksi").on("click", "#backTransaksi", function () {
             loadDataTransaksi();
         });
+
+        $("#contentTransaksi").on("click", "#detailTransaksi", function () {
+            let idTransaksi = $(this).attr("value");
+            $.ajax({
+                url: 'transaksi_detail.php',
+                type: 'get',
+                data: {
+                    idTransaksi: idTransaksi
+                },
+                success: function (data) {
+                    $('#contentTransaksi').html(data);
+                }
+            })
+        })
     });
 
     function loadDataCetakan() {
