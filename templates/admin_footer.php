@@ -315,6 +315,38 @@
                 }
             })
         });
+
+        //Hapus data transaksi berdasarkan id
+        $("#contentTransaksi").on("click", "#deleteTransaksi", function () {
+            Swal.fire({
+                title: 'Apa anda yakin?',
+                text: "Anda tidak dapat membatalkan ini!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Hapus'
+            }).then((result) => {
+                if (result.value) {
+                    let idTransaksi = $(this).attr("value");
+                    $.ajax({
+                        url: 'transaksi_service.php?action=delete',
+                        type: 'post',
+                        data: {
+                            idTransaksi: idTransaksi
+                        },
+                        success: function (data) {
+                            Swal.fire(
+                                'Delete Success!',
+                                data,
+                                'success'
+                            );
+                            loadDataTransaksi();
+                        }
+                    });
+                }
+            });
+        });
     });
 
     function loadDataCetakan() {

@@ -51,4 +51,15 @@
 
             echo 'Edit Data Transaksi Berhasil!';
         break;
+
+        case 'delete':
+            $idTransaksi = $_POST['idTransaksi'];
+
+            //Hapus pada tabel transaksi
+            $query = mysqli_query($koneksi, "DELETE FROM tb_transaksi WHERE transaksi_id = '$idTransaksi'");
+            //Hapus pada tabel detail transaksi
+            $query2 = mysqli_query($koneksi, "DELETE FROM tb_detail_transaksi WHERE detail_transaksi = '$idTransaksi'");
+
+            echo 'Delete Data Transaksi Berhasil!';
+        break;
     }
