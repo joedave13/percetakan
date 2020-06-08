@@ -262,6 +262,7 @@
             loadDataTransaksi();
         });
 
+        //Tampilkan detail transaksi
         $("#contentTransaksi").on("click", "#detailTransaksi", function () {
             let idTransaksi = $(this).attr("value");
             $.ajax({
@@ -274,7 +275,46 @@
                     $('#contentTransaksi').html(data);
                 }
             })
-        })
+        });
+
+        //Load form edit transaksi
+        $("#contentTransaksi").on("click", "#editTransaksi", function () {
+            let idTransaksi = $(this).attr("value");
+            $.ajax({
+                url: 'transaksi_edit.php',
+                type: 'get',
+                data: {
+                    idTransaksi: idTransaksi
+                },
+                success: function (data) {
+                    $('#contentTransaksi').html(data);
+                    $('.select-pelanggan').select2({
+                        theme: 'bootstrap4'
+                    });
+                    $('.select-barang').select2({
+                        theme: 'bootstrap4'
+                    });
+                }
+            })
+        });
+
+        //Edit data transaksi
+        $("#contentTransaksi").on("submit", "#formEditTransaksi", function (e) {
+            e.preventDefault();
+            $.ajax({
+                url: 'transaksi_service.php?action=edit',
+                type: 'post',
+                data: $(this).serialize(),
+                success: function (data) {
+                    Swal.fire(
+                        'Edit Success!',
+                        data,
+                        'info'
+                    );
+                    loadDataTransaksi();
+                }
+            })
+        });
     });
 
     function loadDataCetakan() {
