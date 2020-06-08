@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 07, 2020 at 03:07 AM
+-- Generation Time: Jun 08, 2020 at 08:25 AM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.10
 
@@ -118,8 +118,13 @@ CREATE TABLE `tb_detail_transaksi` (
 --
 
 INSERT INTO `tb_detail_transaksi` (`detail_id`, `detail_transaksi`, `detail_barang`, `detail_panjang`, `detail_lebar`) VALUES
-(26, 28, 1, 5, 5),
-(27, 28, 2, 5, 5);
+(32, 28, 1, 5, 5),
+(33, 28, 2, 5, 5),
+(38, 30, 5, 1, 1),
+(39, 30, 1, 5, 5),
+(46, 29, 1, 5, 5),
+(47, 29, 2, 5, 5),
+(48, 29, 5, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -262,7 +267,9 @@ CREATE TABLE `tb_transaksi` (
 --
 
 INSERT INTO `tb_transaksi` (`transaksi_id`, `transaksi_tgl`, `transaksi_pelanggan`, `transaksi_status`) VALUES
-(28, '2020-06-07', 5, 1);
+(28, '2020-06-07', 5, 2),
+(29, '2020-06-08', 1, 1),
+(30, '2020-06-08', 4, 2);
 
 -- --------------------------------------------------------
 
@@ -378,7 +385,7 @@ ALTER TABLE `tb_cetakan`
 -- AUTO_INCREMENT for table `tb_detail_transaksi`
 --
 ALTER TABLE `tb_detail_transaksi`
-  MODIFY `detail_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `detail_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT for table `tb_dokumen`
@@ -408,7 +415,7 @@ ALTER TABLE `tb_stem`
 -- AUTO_INCREMENT for table `tb_transaksi`
 --
 ALTER TABLE `tb_transaksi`
-  MODIFY `transaksi_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `transaksi_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `tb_vektor`
