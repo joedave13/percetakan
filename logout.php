@@ -1,5 +1,5 @@
 <?php 
     session_start();
     session_destroy();
-    header('location: index.php?pesan=logout');
+    header('location: admin_login.php?pesan=logout');
 ?>
