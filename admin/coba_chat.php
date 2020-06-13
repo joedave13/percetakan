@@ -20,7 +20,7 @@
                 <textarea name="respon" id="respon" cols="30" rows="10" class="form-control mt-3" readonly>
                     <?php  
                         if (isset($_POST['submit'])) {
-                            $keyword = $_POST['keyword'];
+                            $keyword = strtolower($_POST['keyword']);
                             ambilCache($keyword);
                         }
                     ?>

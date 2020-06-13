@@ -1,7 +1,7 @@
 <?php include '../templates/admin_header.php'; ?>
 <?php include '../templates/admin_sidebar.php'; ?>
 
-<div class="col-md-9">
+<div class="col-md-9 mb-5">
     <h3>Data Master Chatbot</h3>
 
     <div class="row mt-3">
