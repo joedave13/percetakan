@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 08, 2020 at 08:25 AM
+-- Generation Time: Jun 13, 2020 at 02:15 PM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.10
 
@@ -60,22 +60,27 @@ CREATE TABLE `tb_cache` (
 --
 
 INSERT INTO `tb_cache` (`id`, `query`, `doc_id`, `nilai`) VALUES
-(1, 'selamat pagi', 1, 0.999999),
-(4, 'jam berapa toko buka', 2, 0.285453),
-(5, 'jam toko buka', 2, 0.285453),
-(6, 'harga banner korea', 12, 0.851645),
-(7, 'harga art paper', 12, 0.491698),
-(53, 'harga cetak banner glossy', 2, 0.0113149),
-(54, 'harga cetak banner glossy', 12, 0.305589),
-(55, 'harga cetak banner glossy', 13, 0.0116249),
-(56, 'harga cetak banner glossy', 14, 0.787619),
-(57, 'harga cetak banner glossy', 15, 0.0956988),
-(58, 'cetak stiker cina', 2, 0.0101516),
-(59, 'cetak stiker cina', 12, 0.0129304),
-(60, 'cetak stiker cina', 13, 0.0104297),
-(61, 'cetak stiker cina', 14, 0.0129304),
-(62, 'cetak stiker cina', 15, 0.794041),
-(63, 'hai', 0, 0);
+(70, 'halo', 17, 1),
+(71, 'selamat pagi', 18, 1),
+(72, 'harga banner biasa', 19, 0.654653),
+(73, 'harga banner korea', 19, 0.172988),
+(74, 'harga banner korea', 20, 0.172988),
+(75, 'harga banner korea', 21, 0.748473),
+(76, 'harga banner korea', 22, 0.00424584),
+(77, 'harga banner korea', 23, 0.00485889),
+(78, 'harga banner korea', 24, 0.00424584),
+(79, 'harga banner korea', 25, 0.00424584),
+(80, 'harga banner korea', 26, 0.00485889),
+(81, 'harga banner korea', 27, 0.00424584),
+(82, 'harga stiker oneway', 19, 0.00444159),
+(83, 'harga stiker oneway', 20, 0.00444159),
+(84, 'harga stiker oneway', 21, 0.00444159),
+(85, 'harga stiker oneway', 22, 0.0473697),
+(86, 'harga stiker oneway', 23, 0.0542093),
+(87, 'harga stiker oneway', 24, 0.0473697),
+(88, 'harga stiker oneway', 25, 0.0473697),
+(89, 'harga stiker oneway', 26, 0.818796),
+(90, 'harga stiker oneway', 27, 0.0473697);
 
 -- --------------------------------------------------------
 
@@ -118,13 +123,9 @@ CREATE TABLE `tb_detail_transaksi` (
 --
 
 INSERT INTO `tb_detail_transaksi` (`detail_id`, `detail_transaksi`, `detail_barang`, `detail_panjang`, `detail_lebar`) VALUES
-(32, 28, 1, 5, 5),
-(33, 28, 2, 5, 5),
-(38, 30, 5, 1, 1),
-(39, 30, 1, 5, 5),
-(46, 29, 1, 5, 5),
-(47, 29, 2, 5, 5),
-(48, 29, 5, 1, 1);
+(50, 29, 1, 5, 5),
+(51, 29, 2, 5, 5),
+(52, 29, 5, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -142,13 +143,17 @@ CREATE TABLE `tb_dokumen` (
 --
 
 INSERT INTO `tb_dokumen` (`id`, `dokumen`) VALUES
-(1, 'selamat pagi'),
-(2, 'percetakan radja printing buka jam 7 pagi'),
-(12, 'mencetak banner korea harganya 30000'),
-(13, 'halo, selamat datang di percetakan radja printing'),
-(14, 'mencetak banner glossy harga 25000'),
-(15, 'cetak stiker cina harganya 55000'),
-(16, 'selamat sore');
+(17, 'Halo'),
+(18, 'Selamat Pagi'),
+(19, 'Harga Cetak Banner Biasa Rp. 18.000'),
+(20, 'Harga Cetak Banner Glossy Rp. 25.000'),
+(21, 'Harga Cetak Banner Korea Rp. 30.000'),
+(22, 'Harga Cetak Stiker Cina Rp. 55.000'),
+(23, 'Harga Cetak Stiker Ritrama Rp. 75.000'),
+(24, 'Harga Cetak Stiker Luster Rp. 60.000'),
+(25, 'Harga Cetak Stiker Cloth Rp. 45.000'),
+(26, 'Harga Cetak Stiker Oneway Rp. 75.000'),
+(27, 'Harga Cetak Stiker Transparan Rp. 80.000');
 
 -- --------------------------------------------------------
 
@@ -169,39 +174,72 @@ CREATE TABLE `tb_index` (
 --
 
 INSERT INTO `tb_index` (`id`, `term`, `id_doc`, `jumlah`, `bobot`) VALUES
-(1, 'selamat', 1, 1, 0.847298),
-(2, 'pagi', 1, 1, 1.25276),
-(3, 'cetak', 2, 1, 0.336472),
-(4, 'radja', 2, 1, 1.25276),
-(5, 'printing', 2, 1, 1.25276),
-(6, 'buka', 2, 1, 1.94591),
-(7, 'jam', 2, 1, 1.94591),
-(8, '7', 2, 1, 1.94591),
-(9, 'pagi', 2, 1, 1.25276),
-(10, 'cetak', 12, 1, 0.336472),
-(11, 'banner', 12, 1, 1.25276),
-(12, 'korea', 12, 1, 1.94591),
-(13, 'harga', 12, 1, 0.847298),
-(14, '30000', 12, 1, 1.94591),
-(15, 'halo', 13, 1, 1.94591),
-(16, 'selamat', 13, 1, 0.847298),
-(17, 'datang', 13, 1, 1.94591),
-(18, 'di', 13, 1, 1.94591),
-(19, 'cetak', 13, 1, 0.336472),
-(20, 'radja', 13, 1, 1.25276),
-(21, 'printing', 13, 1, 1.25276),
-(22, 'cetak', 14, 1, 0.336472),
-(23, 'banner', 14, 1, 1.25276),
-(24, 'glossy', 14, 1, 1.94591),
-(25, 'harga', 14, 1, 0.847298),
-(26, '25000', 14, 1, 1.94591),
-(27, 'cetak', 15, 1, 0.336472),
-(28, 'stiker', 15, 1, 1.94591),
-(29, 'cina', 15, 1, 1.94591),
-(30, 'harga', 15, 1, 0.847298),
-(31, '55000', 15, 1, 1.94591),
-(32, 'selamat', 16, 1, 0.847298),
-(33, 'sore', 16, 1, 1.94591);
+(1, 'halo', 17, 1, 2.3979),
+(2, 'selamat', 18, 1, 2.3979),
+(3, 'pagi', 18, 1, 2.3979),
+(4, 'harga', 19, 1, 0.200671),
+(5, 'cetak', 19, 1, 0.200671),
+(6, 'banner', 19, 1, 1.29928),
+(7, 'biasa', 19, 1, 2.3979),
+(8, 'rp', 19, 1, 0.200671),
+(9, '18', 19, 1, 2.3979),
+(10, '000', 19, 1, 0.200671),
+(11, 'harga', 20, 1, 0.200671),
+(12, 'cetak', 20, 1, 0.200671),
+(13, 'banner', 20, 1, 1.29928),
+(14, 'glossy', 20, 1, 2.3979),
+(15, 'rp', 20, 1, 0.200671),
+(16, '25', 20, 1, 2.3979),
+(17, '000', 20, 1, 0.200671),
+(18, 'harga', 21, 1, 0.200671),
+(19, 'cetak', 21, 1, 0.200671),
+(20, 'banner', 21, 1, 1.29928),
+(21, 'korea', 21, 1, 2.3979),
+(22, 'rp', 21, 1, 0.200671),
+(23, '30', 21, 1, 2.3979),
+(24, '000', 21, 1, 0.200671),
+(25, 'harga', 22, 1, 0.200671),
+(26, 'cetak', 22, 1, 0.200671),
+(27, 'stiker', 22, 1, 0.606136),
+(28, 'cina', 22, 1, 2.3979),
+(29, 'rp', 22, 1, 0.200671),
+(30, '55', 22, 1, 2.3979),
+(31, '000', 22, 1, 0.200671),
+(32, 'harga', 23, 1, 0.200671),
+(33, 'cetak', 23, 1, 0.200671),
+(34, 'stiker', 23, 1, 0.606136),
+(35, 'ritrama', 23, 1, 2.3979),
+(36, 'rp', 23, 1, 0.200671),
+(37, '75', 23, 1, 1.70475),
+(38, '000', 23, 1, 0.200671),
+(39, 'harga', 24, 1, 0.200671),
+(40, 'cetak', 24, 1, 0.200671),
+(41, 'stiker', 24, 1, 0.606136),
+(42, 'luster', 24, 1, 2.3979),
+(43, 'rp', 24, 1, 0.200671),
+(44, '60', 24, 1, 2.3979),
+(45, '000', 24, 1, 0.200671),
+(46, 'harga', 25, 1, 0.200671),
+(47, 'cetak', 25, 1, 0.200671),
+(48, 'stiker', 25, 1, 0.606136),
+(49, 'cloth', 25, 1, 2.3979),
+(50, 'rp', 25, 1, 0.200671),
+(51, '45', 25, 1, 2.3979),
+(52, '000', 25, 1, 0.200671),
+(53, 'harga', 26, 1, 0.200671),
+(54, 'cetak', 26, 1, 0.200671),
+(55, 'stiker', 26, 1, 0.606136),
+(56, 'oneway', 26, 1, 2.3979),
+(57, 'rp', 26, 1, 0.200671),
+(58, '75', 26, 1, 1.70475),
+(59, '000', 26, 1, 0.200671),
+(60, 'harga', 27, 1, 0.200671),
+(61, 'cetak', 27, 1, 0.200671),
+(62, 'stiker', 27, 1, 0.606136),
+(63, 'transparan', 27, 1, 2.3979),
+(64, 'rp', 27, 1, 0.200671),
+(65, '80', 27, 1, 2.3979),
+(66, '000', 27, 1, 0.200671);
 
 -- --------------------------------------------------------
 
@@ -225,7 +263,8 @@ CREATE TABLE `tb_pelanggan` (
 INSERT INTO `tb_pelanggan` (`pelanggan_id`, `pelanggan_nama`, `pelanggan_jk`, `pelanggan_alamat`, `pelanggan_hp`, `pelanggan_email`) VALUES
 (1, 'Joshua Davian', 'Pria', 'Jl. Adi Sucipto Gg. Jinitren No. 82 Kediri', '082325182769', 'joshuadavian@gmail.com'),
 (4, 'Yohana Bernike', 'Wanita', 'Kediri', '082325182769', 'yohanabernike@gmail.com'),
-(5, 'Trianta Almira', 'Wanita', 'Probolinggo', '082325182769', 'trianta@gmail.com');
+(5, 'Trianta Almira', 'Wanita', 'Probolinggo', '082325182769', 'trianta@gmail.com'),
+(6, 'Andi Hermawan', 'Pria', 'Jakarta', '086754678432', 'andi@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -267,9 +306,7 @@ CREATE TABLE `tb_transaksi` (
 --
 
 INSERT INTO `tb_transaksi` (`transaksi_id`, `transaksi_tgl`, `transaksi_pelanggan`, `transaksi_status`) VALUES
-(28, '2020-06-07', 5, 2),
-(29, '2020-06-08', 1, 1),
-(30, '2020-06-08', 4, 2);
+(29, '2020-06-08', 1, 2);
 
 -- --------------------------------------------------------
 
@@ -287,13 +324,17 @@ CREATE TABLE `tb_vektor` (
 --
 
 INSERT INTO `tb_vektor` (`doc_id`, `panjang`) VALUES
-(1, 1.51239),
-(2, 4.02258),
-(12, 3.15811),
-(13, 3.91531),
-(14, 3.15811),
-(15, 3.49154),
-(16, 2.12238);
+(17, 2.3979),
+(18, 3.39114),
+(19, 3.65364),
+(20, 3.65364),
+(21, 3.65364),
+(22, 3.46819),
+(23, 3.03061),
+(24, 3.46819),
+(25, 3.46819),
+(26, 3.03061),
+(27, 3.46819);
 
 --
 -- Indexes for dumped tables
@@ -373,7 +414,7 @@ ALTER TABLE `tb_admin`
 -- AUTO_INCREMENT for table `tb_cache`
 --
 ALTER TABLE `tb_cache`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
 
 --
 -- AUTO_INCREMENT for table `tb_cetakan`
@@ -385,25 +426,25 @@ ALTER TABLE `tb_cetakan`
 -- AUTO_INCREMENT for table `tb_detail_transaksi`
 --
 ALTER TABLE `tb_detail_transaksi`
-  MODIFY `detail_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `detail_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
 -- AUTO_INCREMENT for table `tb_dokumen`
 --
 ALTER TABLE `tb_dokumen`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `tb_index`
 --
 ALTER TABLE `tb_index`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
 
 --
 -- AUTO_INCREMENT for table `tb_pelanggan`
 --
 ALTER TABLE `tb_pelanggan`
-  MODIFY `pelanggan_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `pelanggan_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `tb_stem`
@@ -415,13 +456,13 @@ ALTER TABLE `tb_stem`
 -- AUTO_INCREMENT for table `tb_transaksi`
 --
 ALTER TABLE `tb_transaksi`
-  MODIFY `transaksi_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `transaksi_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `tb_vektor`
 --
 ALTER TABLE `tb_vektor`
-  MODIFY `doc_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `doc_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
