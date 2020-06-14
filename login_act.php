@@ -17,10 +17,10 @@
             header('location: admin/dashboard.php');
         }
         else {
-            header('location: admin_login.php?pesan=wrong_password');
+            header('location: index.php?pesan=wrong_password');
         }
     }
     else {
-        header('location: admin_login.php?pesan=no_username');
+        header('location: index.php?pesan=no_username');
     }
 ?>
