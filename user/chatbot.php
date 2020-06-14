@@ -20,7 +20,8 @@
 
         <div class="row justify-content-center mt-5">
             <div class="col-md-7">
-                <div class="card">
+                <!-- Card Chatbot -->
+                <div class="card border-primary">
                     <div class="card-header">
                         <div class="card-title text-center text-primary"><b>Chatbot Customer Service</b></div>
                     </div>
@@ -53,6 +54,24 @@
                         </dl>
                     </div>
                 </div>
+                <!-- End Card Chatbot -->
+
+                <!-- Instruksi User -->
+                <div class="alert alert-primary mt-4" role="alert">
+                    <h4 class="alert-heading">Instruksi Penggunaan</h4>
+                    <ul>
+                        <li>Chatbot hanya menerima pertanyaan dengan Bahasa Indonesia</li>
+                        <li>
+                            Chatbot hanya melayani pertanyaan tentang :
+                            <ul>
+                                <li>Jam Layanan Percetakan</li>
+                                <li>Jenis Layanan Percetakan</li>
+                                <li>Harga Masing-Masing Layanan</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <!-- End Instruksi User -->
             </div>
         </div>
 
