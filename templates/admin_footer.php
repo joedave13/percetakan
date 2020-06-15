@@ -11,6 +11,7 @@
         loadDataCetakan();
         loadDataPelanggan();
         loadDataTransaksi();
+        loadDataStem();
 
         //Load form add cetakan
         $("#contentCetakan").on("click", "#addCetakan", function () {
@@ -347,6 +348,40 @@
                 }
             });
         });
+
+        //Load Form Tambah Stem Data
+        $("#contentStem").on("click", "#addStem", function () {
+            $.ajax({
+                url: 'stem_input.php',
+                type: 'get',
+                success: function (data) {
+                    $('#contentStem').html(data);
+                }
+            });
+        });
+
+        //Kembali ke daftar stem
+        $("#contentStem").on("click", "#backStem", function () {
+            loadDataStem();
+        });
+
+        //Simpan data stem
+        $("#contentStem").on("submit", "#formAddStem", function (e) {
+            e.preventDefault();
+            $.ajax({
+                url: 'stem_service.php?action=save',
+                type: 'post',
+                data: $(this).serialize(),
+                success: function (data) {
+                    Swal.fire(
+                        'Insert Success!',
+                        data,
+                        'success'
+                    );
+                    loadDataStem();
+                }
+            })
+        });
     });
 
     function loadDataCetakan() {
@@ -378,6 +413,16 @@
 
             }
         });
+    }
+
+    function loadDataStem() {
+        $.ajax({
+            url: 'data-stem.php',
+            type: 'get',
+            success: function (data) {
+                $('#contentStem').html(data);
+            }
+        })
     }
 </script>
 
