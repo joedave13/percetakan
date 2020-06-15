@@ -382,6 +382,71 @@
                 }
             })
         });
+
+        //Load form edit stem
+        $("#contentStem").on("click", "#editStem", function () {
+            let idStem = $(this).attr("value");
+            $.ajax({
+                url: 'stem_edit.php',
+                type: 'get',
+                data: {
+                    idStem: idStem
+                },
+                success: function (data) {
+                    $('#contentStem').html(data);
+                }
+            })
+        });
+
+        //Edit data stem
+        $("#contentStem").on("submit", "#formEditStem", function (e) {
+            e.preventDefault();
+            $.ajax({
+                url: 'stem_service.php?action=edit',
+                type: 'post',
+                data: $(this).serialize(),
+                success: function (data) {
+                    Swal.fire(
+                        'Edit Success!',
+                        data,
+                        'info'
+                    );
+                    loadDataStem();
+                }
+            })
+        });
+
+        //Hapus data pelanggan berdasarkan id
+        $("#contentStem").on("click", "#deleteStem", function () {
+            Swal.fire({
+                title: 'Apa anda yakin?',
+                text: "Anda tidak dapat membatalkan ini!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Hapus'
+            }).then((result) => {
+                if (result.value) {
+                    let idStem = $(this).attr("value");
+                    $.ajax({
+                        url: 'stem_service.php?action=delete',
+                        type: 'post',
+                        data: {
+                            idStem: idStem
+                        },
+                        success: function (data) {
+                            Swal.fire(
+                                'Delete Success!',
+                                data,
+                                'success'
+                            );
+                            loadDataStem();
+                        }
+                    });
+                }
+            });
+        });
     });
 
     function loadDataCetakan() {
