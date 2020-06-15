@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 13, 2020 at 02:15 PM
+-- Generation Time: Jun 15, 2020 at 02:16 PM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.10
 
@@ -80,7 +80,16 @@ INSERT INTO `tb_cache` (`id`, `query`, `doc_id`, `nilai`) VALUES
 (87, 'harga stiker oneway', 24, 0.0473697),
 (88, 'harga stiker oneway', 25, 0.0473697),
 (89, 'harga stiker oneway', 26, 0.818796),
-(90, 'harga stiker oneway', 27, 0.0473697);
+(90, 'harga stiker oneway', 27, 0.0473697),
+(91, 'harga banner', 19, 0.359829),
+(92, 'harga banner', 20, 0.359829),
+(93, 'harga banner', 21, 0.359829),
+(94, 'harga banner', 22, 0.00883167),
+(95, 'harga banner', 23, 0.0101068),
+(96, 'harga banner', 24, 0.00883167),
+(97, 'harga banner', 25, 0.00883167),
+(98, 'harga banner', 26, 0.0101068),
+(99, 'harga banner', 27, 0.00883167);
 
 -- --------------------------------------------------------
 
@@ -286,7 +295,10 @@ INSERT INTO `tb_stem` (`id`, `term`, `stem`) VALUES
 (1, 'percetakan', 'cetak'),
 (2, 'mencetak', 'cetak'),
 (3, 'harganya', 'harga'),
-(4, 'membeli', 'beli');
+(4, 'membeli', 'beli'),
+(5, 'berharga', 'harga'),
+(6, 'dibeli', 'beli'),
+(8, 'dicetak', 'cetak');
 
 -- --------------------------------------------------------
 
@@ -414,7 +426,7 @@ ALTER TABLE `tb_admin`
 -- AUTO_INCREMENT for table `tb_cache`
 --
 ALTER TABLE `tb_cache`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100;
 
 --
 -- AUTO_INCREMENT for table `tb_cetakan`
@@ -450,7 +462,7 @@ ALTER TABLE `tb_pelanggan`
 -- AUTO_INCREMENT for table `tb_stem`
 --
 ALTER TABLE `tb_stem`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `tb_transaksi`
