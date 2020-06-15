@@ -4,25 +4,11 @@
 <div class="col-md-9 mb-5">
     <h3>Data Master Chatbot</h3>
 
-    <div class="row mt-3">
+    <div class="row mt-3 mb-3">
         <div class="col-md-4">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#inputModal">
+            <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#inputModal">
                 <i class="fas fa-fw fa-plus"></i> Tambah Data
             </button>
-        </div>
-        <div class="col-md-8">
-            <form action="">
-                <div class="form-group float-right">
-                    <div class="input-group">
-                        <input type="text" name="search" id="search" class="form-control" placeholder="Search...">
-                        <div class="input-group-append">
-                            <button type="submit" class="btn btn-sm btn-secondary">
-                                <i class="fas fa-fw fa-search"></i> Search
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </form>
         </div>
     </div>
     <div class="card">
