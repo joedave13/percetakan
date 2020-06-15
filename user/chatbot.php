@@ -30,7 +30,7 @@
                             <div class="form-row">
                                 <div class="col-11">
                                     <input type="text" name="keyword" id="keyword" class="form-control"
-                                        placeholder="Tanyakan sesuatu...">
+                                        placeholder="Tanyakan sesuatu..." autofocus>
                                 </div>
                                 <div class="col-1">
                                     <button type="submit" name="submit" class="btn btn-primary">
