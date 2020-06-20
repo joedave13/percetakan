@@ -43,7 +43,7 @@
                         Setting
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Ganti Password</a>
+                        <a class="dropdown-item" href="ganti_password.php">Ganti Password</a>
                     </div>
                 </li>
             </ul>

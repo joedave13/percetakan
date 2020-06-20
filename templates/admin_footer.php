@@ -504,6 +504,22 @@
             }
         })
     }
+
+    function showPassword() {
+        let old_pass = document.getElementById('old_password');
+        let new_pass = document.getElementById('new_password');
+        let conf_pass = document.getElementById('conf_password');
+
+        if (old_pass.type === 'password' && new_pass.type === 'password' && conf_pass.type === 'password') {
+            old_pass.type = 'text';
+            new_pass.type = 'text';
+            conf_pass.type = 'text';
+        } else {
+            old_pass.type = 'password';
+            new_pass.type = 'password';
+            conf_pass.type = 'password';
+        }
+    }
 </script>
 
 </body>
