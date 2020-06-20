@@ -161,6 +161,21 @@
             })
         });
 
+        //Detail data pelanggan
+        $("#contentPelanggan").on("click", "#detailPelanggan", function () {
+            let idPelanggan = $(this).attr("value");
+            $.ajax({
+                url: 'pelanggan_detail.php',
+                type: 'get',
+                data: {
+                    idPelanggan: idPelanggan
+                },
+                success: function (data) {
+                    $('#contentPelanggan').html(data);
+                }
+            })
+        })
+
         //Edit data pelanggan
         $("#contentPelanggan").on("submit", "#formEditPelanggan", function (e) {
             e.preventDefault();

@@ -1,6 +1,6 @@
 <h3>Data Pelanggan</h3>
 
-<button id="addPelanggan" class="btn btn-primary my-3">
+<button id="addPelanggan" class="btn btn-sm btn-primary my-3">
     <i class="fas fa-fw fa-plus"></i> Tambah Data Pelanggan
 </button>
 

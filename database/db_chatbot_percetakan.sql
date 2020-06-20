@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 15, 2020 at 02:16 PM
+-- Generation Time: Jun 18, 2020 at 08:56 AM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.10
 
@@ -89,7 +89,8 @@ INSERT INTO `tb_cache` (`id`, `query`, `doc_id`, `nilai`) VALUES
 (96, 'harga banner', 24, 0.00883167),
 (97, 'harga banner', 25, 0.00883167),
 (98, 'harga banner', 26, 0.0101068),
-(99, 'harga banner', 27, 0.00883167);
+(99, 'harga banner', 27, 0.00883167),
+(100, 'hai', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -426,7 +427,7 @@ ALTER TABLE `tb_admin`
 -- AUTO_INCREMENT for table `tb_cache`
 --
 ALTER TABLE `tb_cache`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
 
 --
 -- AUTO_INCREMENT for table `tb_cetakan`
