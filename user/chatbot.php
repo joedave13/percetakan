@@ -11,8 +11,8 @@
 
 <body>
     <?php
-        //Load fungsi
-        include 'fungsi.php';
+    //Load fungsi
+    include 'fungsi.php';
     ?>
 
     <div class="container my-5">
@@ -29,8 +29,7 @@
                         <form action="" method="POST">
                             <div class="form-row">
                                 <div class="col-11">
-                                    <input type="text" name="keyword" id="keyword" class="form-control"
-                                        placeholder="Tanyakan sesuatu..." autofocus>
+                                    <input type="text" name="keyword" id="keyword" class="form-control" placeholder="Tanyakan sesuatu..." autofocus>
                                 </div>
                                 <div class="col-1">
                                     <button type="submit" name="submit" class="btn btn-primary">
@@ -43,15 +42,18 @@
                     <div class="card-footer">
                         <dl class="row">
                             <dt class="col-sm-3">Respon Chatbot : </dt>
-                            <dd class="col-sm-9">
-                                <?php 
-                                    if (isset($_POST['submit'])) {
-                                        $keyword = strtolower($_POST['keyword']);
-                                        ambilCache($keyword);
-                                    }
+                            <dd class="col-sm-9" id="response">
+                                <?php
+                                if (isset($_POST['submit'])) {
+                                    $keyword = strtolower($_POST['keyword']);
+                                    ambilCache($keyword);
+                                }
                                 ?>
                             </dd>
                         </dl>
+                        <button type="button" class="btn btn-danger btn-sm" id="resetBtn" onclick="resetButton()">
+                            <i class="fas fa-fw fa-times"></i> Reset
+                        </button>
                     </div>
                 </div>
                 <!-- End Card Chatbot -->
@@ -79,6 +81,11 @@
 
     <script src="../assets/js/jquery-3.4.1.min.js"></script>
     <script src="../assets/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function resetButton(params) {
+            document.getElementById("response").innerHTML = "";
+        }
+    </script>
 </body>
 
 </html>
