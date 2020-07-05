@@ -7,6 +7,11 @@
             $harga = $_POST['harga'];
 
             $query = mysqli_query($koneksi, "INSERT INTO tb_cetakan VALUES (null, '$nama', '$harga')");
+
+            $data_jawaban = 'Harga Cetak ' . $nama . ' Rp. ' . $harga;
+            
+            $query_jawaban = mysqli_query($koneksi, "INSERT INTO tb_dokumen VALUES (null, '$data_jawaban')");
+            
             if ($query) {
                 echo "Tambah Data Cetakan Berhasil!";
             }
