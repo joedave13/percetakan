@@ -2,7 +2,9 @@
 function preproses($teks)
 {
     include '../koneksi.php';
-    //Bersihkan tanda baca, ganti dengan space
+    //Bersihkan tanda baca
+    // $teks = preg_replace("/[^A-Za-z0-9 ]/", ' ', $teks);
+
     $teks = str_replace("'", " ", $teks);
     $teks = str_replace("-", " ", $teks);
     $teks = str_replace(")", " ", $teks);
@@ -28,6 +30,8 @@ function preproses($teks)
     }
 
     //Terapkan stemming (ubah ke kata dasar)
+    //Data stemming diperoleh dari tabel stem yang berisi kata-kata dalam tabel dokumen yang memiliki
+    //kemungkinan root word (kata dasar)
     $restem = mysqli_query($koneksi, "SELECT * FROM tb_stem ORDER BY id");
 
     while ($rowstem = mysqli_fetch_array($restem)) {
@@ -58,7 +62,7 @@ function buatIndex()
         //Preprocessing
         $dokumen = preproses($dokumen);
 
-        //Simpan ke tabel index
+        //Buat token dan simpan ke tabel index token
         $aDokumen = explode(" ", trim($dokumen));
 
         foreach ($aDokumen as $j => $value) {
