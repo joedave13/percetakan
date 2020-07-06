@@ -11,20 +11,42 @@
                 <div class="text-center">Chatbot</div>
             </div>
             <div class="card-body">
-                <form action="" method="post" class="form-inline">
-                    <input type="text" name="keyword" id="keyword" class="form-control mr-2"
-                        placeholder="Silahkan bertanya" required>
-                    <button type="submit" class="btn btn-primary" name="submit">Submit</button>
+                <?php 
+                    if(isset($_POST['submit'])) {
+                        $question = $_POST['keyword'];
+                        $keyword = strtolower($question);
+                        $answer = ambilCache($keyword);
+                        echo '<div class="card w-50 float-right">
+                        <div class="card-body">
+                            <h6><b>Customer : </b></h6>
+                            <small>' . date('d M Y H:i:s') . '</small>
+                            <p class="card-text">' . $question . '</p>
+                        </div>
+                        </div>';
+                        echo '<div class="my-5">';
+                        echo '<div class="card w-50 float-left mt-5">
+                        <div class="card-body">
+                        <h6><b>Chatbot : </b></h6>
+                            <small>' . date('d M Y H:i:s') . '</small>
+                            <p class="card-text">' . $answer . '</p>
+                        </div>
+                        </div>';
+                        echo '</div>';
+                    }
+                ?>
+            </div>
+            <div class="card-footer">
+                <form action="" method="post">
+                    <div class="form-row">
+                        <div class="col-sm-10">
+                            <input type="text" name="keyword" id="keyword" class="form-control mr-2"
+                                placeholder="Silahkan bertanya" required>
+                        </div>
+                        <div class="col-sm-2">
+                            <button type="submit" class="btn btn-primary" name="submit">Submit</button>
+                        </div>
+                    </div>
                 </form>
-
-                <textarea name="respon" id="respon" cols="30" rows="10" class="form-control mt-3" readonly>
-                    <?php  
-                        if (isset($_POST['submit'])) {
-                            $keyword = strtolower($_POST['keyword']);
-                            ambilCache($keyword);
-                        }
-                    ?>
-                </textarea>
             </div>
         </div>
     </div>

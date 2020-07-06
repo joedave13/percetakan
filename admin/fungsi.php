@@ -228,9 +228,8 @@ function ambilCache($keyword)
                 $rowChat = mysqli_fetch_array($responChat);
 
                 $answer = $rowChat['dokumen'];
-                print($answer);
             } else {
-                print('Jawaban tidak ditemukan...');
+                $answer = 'Jawaban tidak ditemukan...';
             }
         }
     } else {
@@ -248,10 +247,11 @@ function ambilCache($keyword)
                 $rowChat = mysqli_fetch_array($responChat);
 
                 $answer = $rowChat['dokumen'];
-                print($answer);
             } else {
-                print('Jawaban tidak ditemukan...');
+                $answer = 'Jawaban tidak ditemukan...';
             }
         }
     }
+
+    return $answer;
 }

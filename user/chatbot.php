@@ -26,10 +26,44 @@
                         <div class="card-title text-center text-primary"><b>Chatbot Customer Service</b></div>
                     </div>
                     <div class="card-body">
+                        <?php if(isset($_POST['submit'])) : ?>
+                        <?php 
+                            $question = $_POST['keyword'];
+                            $keyword = strtolower($question);
+                            $answer = ambilCache($keyword);    
+                        ?>
+                        <div class="row">
+                            <div class="col-sm-6"></div>
+                            <div class="col-sm-6">
+                                <div class="card bg-primary text-white">
+                                    <div class="card-body">
+                                        <h6><b>Customer : </b></h6>
+                                        <small class="text-white"><?= date('d M Y H:i'); ?></small>
+                                        <p class="card-text"><?= $question; ?></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h6><b>Chatbot : </b></h6>
+                                        <small class="text-primary"><?= date('d M Y H:i'); ?></small>
+                                        <p class="card-text"><?= $answer; ?></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6"></div>
+                        </div>
+                        <?php endif; ?>
+                    </div>
+                    <div class="card-footer">
                         <form action="" method="POST">
                             <div class="form-row">
                                 <div class="col-11">
-                                    <input type="text" name="keyword" id="keyword" class="form-control" placeholder="Tanyakan sesuatu..." autofocus>
+                                    <input type="text" name="keyword" id="keyword" class="form-control"
+                                        placeholder="Tanyakan sesuatu..." autofocus>
                                 </div>
                                 <div class="col-1">
                                     <button type="submit" name="submit" class="btn btn-primary">
@@ -38,22 +72,6 @@
                                 </div>
                             </div>
                         </form>
-                    </div>
-                    <div class="card-footer">
-                        <dl class="row">
-                            <dt class="col-sm-3">Respon Chatbot : </dt>
-                            <dd class="col-sm-9" id="response">
-                                <?php
-                                if (isset($_POST['submit'])) {
-                                    $keyword = strtolower($_POST['keyword']);
-                                    ambilCache($keyword);
-                                }
-                                ?>
-                            </dd>
-                        </dl>
-                        <button type="button" class="btn btn-danger btn-sm" id="resetBtn" onclick="resetButton()">
-                            <i class="fas fa-fw fa-times"></i> Reset
-                        </button>
                     </div>
                 </div>
                 <!-- End Card Chatbot -->
