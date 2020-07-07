@@ -1,4 +1,6 @@
 <?php 
+    include '../koneksi.php';
+
     if (isset($_POST['editButton'])) {
         $id = $_POST['id_dok'];
         $dokumen = $_POST['data_dok'];
