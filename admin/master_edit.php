@@ -3,13 +3,6 @@
 
 <?php 
     include '../koneksi.php';
-    if (isset($_POST['editButton'])) {
-        $id = $_POST['id_dok'];
-        $dokumen = strtolower($_POST['data_dok']);
-
-        mysqli_query($koneksi, "UPDATE tb_dokumen SET dokumen = '$dokumen' WHERE id = '$id'");
-        header('location: master_index.php?pesan=edit');
-    }
 ?>
 
 <div class="col-md-9">
@@ -23,7 +16,7 @@
                 $data = mysqli_query($koneksi, "SELECT * FROM tb_dokumen WHERE id = '$id'");
                 while($d = mysqli_fetch_array($data)) {
             ?>
-            <form action="" method="post">
+            <form action="master_edit_act.php" method="post">
                 <div class="form-group">
                     <label for="id"><b>ID</b></label>
                     <input type="text" name="id_dok" id="id_dok" class="form-control" value="<?= $d['id']; ?>" readonly>
