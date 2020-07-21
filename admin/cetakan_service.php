@@ -5,11 +5,12 @@
         case 'save':
             $nama = $_POST['nama'];
             $harga = $_POST['harga'];
-
+            
+            //Menambahkan data barang
             $query = mysqli_query($koneksi, "INSERT INTO tb_cetakan VALUES (null, '$nama', '$harga')");
 
+            //Menambahkan data jawaban
             $data_jawaban = 'Harga Cetak ' . $nama . ' Rp. ' . $harga;
-            
             $query_jawaban = mysqli_query($koneksi, "INSERT INTO tb_dokumen VALUES (null, '$data_jawaban')");
             
             if ($query) {
