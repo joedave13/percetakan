@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.1
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 24, 2020 at 06:25 AM
--- Server version: 10.4.8-MariaDB
--- PHP Version: 7.3.10
+-- Generation Time: Oct 24, 2020 at 06:47 PM
+-- Server version: 10.4.14-MariaDB
+-- PHP Version: 7.4.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -437,6 +436,19 @@ INSERT INTO `tb_index` (`id`, `term`, `id_doc`, `jumlah`, `bobot`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tb_jawaban_tidak_ketemu`
+--
+
+CREATE TABLE `tb_jawaban_tidak_ketemu` (
+  `jawaban_id` int(11) NOT NULL,
+  `jawaban_query` varchar(255) NOT NULL,
+  `jawaban_jawaban` varchar(255) NOT NULL,
+  `jawaban_tanggal` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tb_pelanggan`
 --
 
@@ -590,6 +602,12 @@ ALTER TABLE `tb_index`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `tb_jawaban_tidak_ketemu`
+--
+ALTER TABLE `tb_jawaban_tidak_ketemu`
+  ADD PRIMARY KEY (`jawaban_id`);
+
+--
 -- Indexes for table `tb_pelanggan`
 --
 ALTER TABLE `tb_pelanggan`
@@ -652,6 +670,12 @@ ALTER TABLE `tb_dokumen`
 --
 ALTER TABLE `tb_index`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=173;
+
+--
+-- AUTO_INCREMENT for table `tb_jawaban_tidak_ketemu`
+--
+ALTER TABLE `tb_jawaban_tidak_ketemu`
+  MODIFY `jawaban_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tb_pelanggan`
