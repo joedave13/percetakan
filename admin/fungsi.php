@@ -230,6 +230,9 @@ function ambilCache($keyword)
                 $answer = $rowChat['dokumen'];
             } else {
                 $answer = 'Jawaban tidak ditemukan...';
+
+                $tanggal = date('d M Y H:i:s');
+                $query_not_found = mysqli_query($koneksi, "INSERT INTO tb_jawaban_tidak_ketemu VALUES(null, '$keyword', '$answer', NOW())");
             }
         }
     } else {
@@ -249,6 +252,9 @@ function ambilCache($keyword)
                 $answer = $rowChat['dokumen'];
             } else {
                 $answer = 'Jawaban tidak ditemukan...';
+
+                $tanggal = date('d M Y H:i:s');
+                $query_not_found = mysqli_query($koneksi, "INSERT INTO tb_jawaban_tidak_ketemu VALUES(null, '$keyword', '$answer', NOW())");
             }
         }
     }
